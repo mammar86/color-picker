@@ -10,3 +10,19 @@ body {
   margin: 0;
   min-height: 100%;
 }
+
+h1 {
+  text-align: center;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
+.circle {
+  width: 200px;
+  height: 200px;
+  margin-top: 5rem;
+  border-radius: 50%;
+  background-color: blue;
+}
