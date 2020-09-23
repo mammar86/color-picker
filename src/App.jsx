@@ -21,29 +21,33 @@ import React, { Component } from 'react'
 
 class App extends Component {
   state = {
-    hue: 0,
-    saturation: 0,
-    lightness: 0,
+    hue: 180,
+    saturation: 50,
+    lightness: 50,
   }
 
   rangeValueHue = event => {
-    console.log(event.target.value)
     this.setState({
       hue: event.target.value,
     })
   }
 
   rangeValueSaturation = event => {
-    console.log(event.target.value)
     this.setState({
       saturation: event.target.value,
     })
   }
 
   rangeValueLightness = event => {
-    console.log(event.target.value)
     this.setState({
       lightness: event.target.value,
+    })
+  }
+  randomColor = () => {
+    this.setState({
+      hue: Math.floor(Math.random() * 361),
+      saturation: Math.floor(Math.random() * 101),
+      lightness: Math.floor(Math.random() * 101),
     })
   }
 
@@ -55,10 +59,11 @@ class App extends Component {
           <div
             className="circle"
             style={{
-              backgroundColor: `hsl(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%`,
+              backgroundColor: `hsl(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%)`,
             }}
           ></div>
         </div>
+        <h1 className="text-color">{`hsl(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%)`}</h1>
         <section>
           <div className="hue">
             <h4>Hue:</h4>
@@ -97,6 +102,11 @@ class App extends Component {
             <span>100</span>
           </div>
         </section>
+        <div className="button">
+          <a href="#" className="myButton" onClick={this.randomColor}>
+            Random Color
+          </a>
+        </div>
       </>
     )
   }
