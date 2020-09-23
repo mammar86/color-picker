@@ -1,8 +1,48 @@
 import React, { Component } from 'react'
 
-class Circle extends Component {
+class Range extends Component {
+  state = {
+    hue: 0,
+    saturation: 0,
+    lightness: 0,
+  }
+
+  rangeValueHue = event => {
+    console.log(event.target.value)
+    this.setState({
+      hue: event.target.value,
+    })
+  }
+
+  rangeValueSaturation = event => {
+    console.log(event.target.value)
+    this.setState({
+      saturation: event.target.value,
+    })
+  }
+
+  rangeValueLightness = event => {
+    console.log(event.target.value)
+    this.setState({
+      lightness: event.target.value,
+    })
+  }
+
   render() {
-    return <div></div>
+    return (
+      <div className={this.props.class}>
+        <h4>{this.props.title}</h4>
+        <span>0</span>
+        <input
+          type="range"
+          min="0"
+          max={this.props.max}
+          value={this.state.hue}
+          onChange={this.rangeValueHue}
+        ></input>
+        <span>{this.props.max}</span>
+      </div>
+    )
   }
 }
 
@@ -15,24 +55,9 @@ class App extends Component {
           <div className="circle"></div>
         </div>
         <section>
-          <div className="hue">
-            <h4>Hue:</h4>
-            <span>0</span>
-            <input type="range" min="0" max="360"></input>
-            <span>360</span>
-          </div>
-          <div className="saturation">
-            <h4>Saturation:</h4>
-            <span>0</span>
-            <input type="range" min="0" max="100"></input>
-            <span>100</span>
-          </div>
-          <div className="lightness">
-            <h4>Lightness:</h4>
-            <span>0</span>
-            <input type="range" min="0" max="100" value="50"></input>
-            <span>100</span>
-          </div>
+          <Range title="Hue" max="360" class="hue" />
+          <Range title="Saturation" max="100" class="saturation" />
+          <Range title="Lightness" max="100" class="lightness" />
         </section>
       </>
     )
